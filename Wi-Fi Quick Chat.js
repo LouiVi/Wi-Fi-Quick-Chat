@@ -24,14 +24,14 @@ function OnStart() {
     messageBox = app.AddTextEdit(layh1, "", .8, .05, "SingleLine");
     messageBox.SetHint('Enter your cool message...');
 
-    sendBtn = app.AddButton(layh1, 'Send');
+    sendBtn = app.AddButton(layh1, 'Send', -1, -1, "AutoShrink");
     sendBtn.SetOnTouch(onSendMsg);
     
     app.AddLayout(lay);
     
     svc = app.CreateService("this", "this", () => {
         app.ShowProgress("Connection Loading...");
-        serviceReadyInterval = setInterval(() => sendMessage("AreYouReady?"), 1000); // Maybe set this to be shorter
+        serviceReadyInterval = setInterval(() => sendMessage("AreYouReady?"), 100); // Maybe set this to be shorter
     });
     svc.SetOnMessage(onSvcMsg);
 }
